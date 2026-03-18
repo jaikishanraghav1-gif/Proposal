@@ -1,40 +1,79 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Ayushi ❤️</title>
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffc0cb, #d8b4fe);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 350px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.yes { background: #ff4d6d; color: white; }
+.no { background: gray; color: white; }
+</style>
+</head>
+<body>
 
-export default function ProposalApp() {
-  const [step, setStep] = useState(0);
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
 
-  const nextStep = () => setStep(step + 1);
+<div class="card" id="content">
+  <h2>Hi Ayushi ❤️</h2>
+  <p>Tap to begin something special...</p>
+  <button onclick="nextStep()">Start</button>
+</div>
 
-  return (
-    <div className="h-screen flex items-center justify-center bg-gradient-to-br from-pink-200 to-purple-300">
-      <motion.div
-        key={step}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-        className="bg-white p-8 rounded-2xl shadow-xl text-center max-w-md"
-      >
-        {step === 0 && (
-          <>
-            <h1 className="text-2xl font-bold mb-4">Hi Ayushi ❤️</h1>
-            <p className="mb-6">I have something special for you...</p>
-            <Button onClick={nextStep}>Start</Button>
-          </>
-        )}
+<script>
+let step = 0;
 
-        {step === 1 && (
-          <>
-            <h2 className="text-xl font-semibold mb-4">Do you remember our first meeting?</h2>
-            <p className="mb-6">That moment changed everything for me.</p>
-            <Button onClick={nextStep}>Next</Button>
-          </>
-        )}
+function nextStep() {
+  const music = document.getElementById("music");
+  music.play();
 
-        {step === 2 && (
-          <>
-            <h2 className="text-xl font-semibold mb-4">Every moment with you...</h2>
+  const content = document.getElementById("content");
+
+  step++;
+
+  if(step === 1){
+    content.innerHTML = "<h2>We haven’t met yet…</h2><p>But something about you feels right.</p><button onclick='nextStep()'>Next</button>";
+  }
+  else if(step === 2){
+    content.innerHTML = "<h2>Strange, right?</h2><p>Still… I feel connected to you.</p><button onclick='nextStep()'>Next</button>";
+  }
+  else if(step === 3){
+    content.innerHTML = "<h2>I believe…</h2><p>Some connections are written before we meet.</p><button onclick='nextStep()'>Next</button>";
+  }
+  else if(step === 4){
+    content.innerHTML = "<h1 style='color:#ff4d6d'>Will you marry me? 💍</h1><button class='yes' onclick='alert("I knew it ❤️")'>Yes</button><button class='no' onclick='alert("Think again 😜")'>No</button>";
+  }
+}
+</script>
+
+</body>
+</html>            <h2 className="text-xl font-semibold mb-4">Every moment with you...</h2>
             <p className="mb-6">Feels like a beautiful dream I never want to wake up from.</p>
             <Button onClick={nextStep}>Next</Button>
           </>
