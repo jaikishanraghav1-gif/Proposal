@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
+<title>Proposal ❤️</title>
 <style>
   body {
     margin: 0;
@@ -36,6 +36,7 @@
     cursor: pointer;
     background-color: #ff4d6d;
     color: white;
+    position: relative;
   }
 
   /* Typing effect */
@@ -81,23 +82,25 @@
 <body>
 
 <div id="box">
-  <h2 id="text">Hi Ayushi ❤️</h2>
-  <p id="message" class="typing">Tap below to start something special...</p>
-  <button onclick="nextStep()">Start</button>
+  <h2 id="text"></h2>
+  <p id="message" class="typing"></p>
+  <button id="startBtn" onclick="nextStep()">Start</button>
 </div>
 
 <audio id="music" loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
-  <!-- Replace above link with actual Bollywood song hosted online if possible -->
+  <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mp3">
+  <!-- Replace with any romantic slow tune URL -->
 </audio>
 
 <script>
 let step = 0;
 const messages = [
+  "Hi Ayushi ❤️",
   "We haven’t met yet…",
   "But I feel something special about you.",
   "Strange, right? Still connected somehow…",
   "I believe some stories are written before we meet.",
+  "I want to spend my life with you… 💖",
   "Will you marry me? 💍"
 ];
 
@@ -131,16 +134,34 @@ function nextStep(){
   let box = document.getElementById("box");
   let music = document.getElementById("music");
 
-  if(step === 0) music.play();
+  if(step === 0) {
+    music.volume = 0.5;
+    music.play().catch(()=>{});
+  }
 
   step++;
-  if(step <= 3){
+
+  if(step <= messages.length-1){
     typeText(textEl, messages[step-1]);
     typeText(messageEl, "");
-  } else if(step === 4){
-    typeText(textEl, messages[4]);
-    messageEl.innerHTML = "";
-    box.innerHTML += "<button onclick='alert(\"I knew it ❤️\")'>Yes</button>";
+  } else if(step === messages.length){
+    // Clear box content and show Yes/No
+    box.innerHTML = `
+      <h1 style="color:red;">Will you marry me? 💍</h1>
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    `;
+
+    const yes = document.getElementById("yesBtn");
+    yes.onclick = ()=>alert("I knew it! ❤️");
+
+    const no = document.getElementById("noBtn");
+    // Runaway NO button
+    no.onmouseover = ()=> {
+      no.style.position = 'absolute';
+      no.style.top = Math.random()*60 + "%";
+      no.style.left = Math.random()*70 + "%";
+    };
   }
 }
 </script>
