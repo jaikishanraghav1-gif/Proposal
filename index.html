@@ -1,73 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Ayushi ❤️</title>
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ffc0cb, #d8b4fe);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  max-width: 350px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-button {
-  padding: 10px 20px;
-  margin: 10px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
-.yes { background: #ff4d6d; color: white; }
-.no { background: gray; color: white; }
-</style>
+<title>For You ❤️</title>
 </head>
-<body>
+
+<body style="margin:0; font-family:Arial; text-align:center; background:linear-gradient(135deg,#ffc0cb,#d8b4fe); display:flex; justify-content:center; align-items:center; height:100vh;">
+
+<div id="box" style="background:white; padding:20px; border-radius:15px; max-width:300px;">
+<h2>Hi Ayushi ❤️</h2>
+<p>Tap below...</p>
+<button onclick="nextStep()" style="padding:10px 20px;">Start</button>
+</div>
 
 <audio id="music" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
 </audio>
-
-<div class="card" id="content">
-  <h2>Hi Ayushi ❤️</h2>
-  <p>Tap to begin something special...</p>
-  <button onclick="nextStep()">Start</button>
-</div>
 
 <script>
 let step = 0;
 
-function nextStep() {
-  const music = document.getElementById("music");
-  music.play();
+function nextStep(){
+  let box = document.getElementById("box");
+  let music = document.getElementById("music");
 
-  const content = document.getElementById("content");
+  // play music after user interaction (important for mobile)
+  if(step === 0){
+    music.play().catch(() => {});
+  }
 
   step++;
 
   if(step === 1){
-    content.innerHTML = "<h2>We haven’t met yet…</h2><p>But something about you feels right.</p><button onclick='nextStep()'>Next</button>";
+    box.innerHTML = `
+      <h3>We haven’t met yet…</h3>
+      <p>But something about you feels right.</p>
+      <button onclick="nextStep()">Next</button>
+    `;
   }
   else if(step === 2){
-    content.innerHTML = "<h2>Strange, right?</h2><p>Still… I feel connected to you.</p><button onclick='nextStep()'>Next</button>";
+    box.innerHTML = `
+      <h3>Strange, right?</h3>
+      <p>Still… I feel connected to you.</p>
+      <button onclick="nextStep()">Next</button>
+    `;
   }
   else if(step === 3){
-    content.innerHTML = "<h2>I believe…</h2><p>Some connections are written before we meet.</p><button onclick='nextStep()'>Next</button>";
+    box.innerHTML = `
+      <h3>I believe</h3>
+      <p>Some stories are written before we meet.</p>
+      <button onclick="nextStep()">Next</button>
+    `;
   }
   else if(step === 4){
-    content.innerHTML = "<h1 style='color:#ff4d6d'>Will you marry me? 💍</h1><button class='yes' onclick='alert("I knew it ❤️")'>Yes</button><button class='no' onclick='alert("Think again 😜")'>No</button>";
+    box.innerHTML = `
+      <h1 style="color:red;">Will you marry me? 💍</h1>
+      <button onclick="alert('I knew it ❤️')">Yes</button>
+    `;
   }
 }
 </script>
