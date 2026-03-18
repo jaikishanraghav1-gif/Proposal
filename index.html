@@ -1,63 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For You ❤️</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg,#ffc0cb,#d8b4fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  #box {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10;
+  }
+
+  button {
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #ff4d6d;
+    color: white;
+  }
+
+  /* Typing effect */
+  .typing {
+    border-right: .15em solid #ff4d6d;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  /* Floating hearts */
+  .heart {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: red;
+    transform: rotate(-45deg);
+    left: 50%;
+    animation: floatUp 5s linear infinite;
+  }
+  .heart:before,
+  .heart:after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: red;
+    border-radius: 50%;
+  }
+  .heart:before {
+    top: -12px;
+    left: 0;
+  }
+  .heart:after {
+    left: 12px;
+    top: 0;
+  }
+  @keyframes floatUp {
+    0% {transform: translateX(0) translateY(0) rotate(-45deg); opacity:1;}
+    100% {transform: translateX(-50px) translateY(-600px) rotate(-45deg); opacity:0;}
+  }
+</style>
 </head>
+<body>
 
-<body style="margin:0; font-family:Arial; text-align:center; background:linear-gradient(135deg,#ffc0cb,#d8b4fe); display:flex; justify-content:center; align-items:center; height:100vh;">
-
-<div id="box" style="background:white; padding:20px; border-radius:15px; max-width:300px;">
-<h2>Hi Ayushi ❤️</h2>
-<p>Tap below...</p>
-<button onclick="nextStep()" style="padding:10px 20px;">Start</button>
+<div id="box">
+  <h2 id="text">Hi Ayushi ❤️</h2>
+  <p id="message" class="typing">Tap below to start something special...</p>
+  <button onclick="nextStep()">Start</button>
 </div>
 
 <audio id="music" loop>
-<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+  <!-- Replace above link with actual Bollywood song hosted online if possible -->
 </audio>
 
 <script>
 let step = 0;
+const messages = [
+  "We haven’t met yet…",
+  "But I feel something special about you.",
+  "Strange, right? Still connected somehow…",
+  "I believe some stories are written before we meet.",
+  "Will you marry me? 💍"
+];
+
+function typeText(element, text, speed=50, callback=null) {
+  element.innerHTML = "";
+  let i = 0;
+  const interval = setInterval(() => {
+    element.innerHTML += text.charAt(i);
+    i++;
+    if(i === text.length) {
+      clearInterval(interval);
+      if(callback) callback();
+    }
+  }, speed);
+}
+
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.style.left = Math.random()*100 + 'vw';
+  heart.style.animationDuration = 3 + Math.random()*3 + 's';
+  document.body.appendChild(heart);
+  setTimeout(()=>document.body.removeChild(heart), 5000);
+}
+
+setInterval(createHeart, 500);
 
 function nextStep(){
+  let textEl = document.getElementById("text");
+  let messageEl = document.getElementById("message");
   let box = document.getElementById("box");
   let music = document.getElementById("music");
 
-  // play music after user interaction (important for mobile)
-  if(step === 0){
-    music.play().catch(() => {});
-  }
+  if(step === 0) music.play();
 
   step++;
-
-  if(step === 1){
-    box.innerHTML = `
-      <h3>We haven’t met yet…</h3>
-      <p>But something about you feels right.</p>
-      <button onclick="nextStep()">Next</button>
-    `;
-  }
-  else if(step === 2){
-    box.innerHTML = `
-      <h3>Strange, right?</h3>
-      <p>Still… I feel connected to you.</p>
-      <button onclick="nextStep()">Next</button>
-    `;
-  }
-  else if(step === 3){
-    box.innerHTML = `
-      <h3>I believe</h3>
-      <p>Some stories are written before we meet.</p>
-      <button onclick="nextStep()">Next</button>
-    `;
-  }
-  else if(step === 4){
-    box.innerHTML = `
-      <h1 style="color:red;">Will you marry me? 💍</h1>
-      <button onclick="alert('I knew it ❤️')">Yes</button>
-    `;
+  if(step <= 3){
+    typeText(textEl, messages[step-1]);
+    typeText(messageEl, "");
+  } else if(step === 4){
+    typeText(textEl, messages[4]);
+    messageEl.innerHTML = "";
+    box.innerHTML += "<button onclick='alert(\"I knew it ❤️\")'>Yes</button>";
   }
 }
 </script>
