@@ -1,83 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Proposal</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-        h1 {
-            font-size: 2.5em;
-        }
-        .hearts {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        .heart {
-            position: absolute;
-            width: 50px;
-            height: 50px;
-            background: red;
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-            animation: float 5s ease-in infinite;
-        }
-        @keyframes float {
-            0% {transform: translateY(0);}
-            50% {transform: translateY(-20px);}
-            100% {transform: translateY(0);}
-        }
-        .button {
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.2em;
-            margin: 10px;
-        }
-        .yes {
-            background-color: green;
-            color: white;
-        }
-        .no {
-            background-color: red;
-            color: white;
-        }
-        .no:hover {
-            transition: 0.3s;
-            transform: translateX(20px);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposal ❤️</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg,#ffc0cb,#d8b4fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  #box {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    max-width: 350px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 10;
+  }
+
+  button {
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #ff4d6d;
+    color: white;
+    position: relative;
+  }
+
+  /* Typing effect */
+  .typing {
+    border-right: .15em solid #ff4d6d;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  /* Floating hearts */
+  .heart {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: red;
+    transform: rotate(-45deg);
+    left: 50%;
+    animation: floatUp 5s linear infinite;
+  }
+  .heart:before,
+  .heart:after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: red;
+    border-radius: 50%;
+  }
+  .heart:before {
+    top: -12px;
+    left: 0;
+  }
+  .heart:after {
+    left: 12px;
+    top: 0;
+  }
+  @keyframes floatUp {
+    0% {transform: translateX(0) translateY(0) rotate(-45deg); opacity:1;}
+    100% {transform: translateX(-50px) translateY(-600px) rotate(-45deg); opacity:0;}
+  }
+</style>
 </head>
 <body>
-    <h1>Will you marry me, Ayushi?</h1>
-    <div class="hearts">
-        <div class="heart" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
-        <div class="heart" style="top: 30%; left: 50%; animation-delay: 1s;"></div>
-        <div class="heart" style="top: 70%; left: 30%; animation-delay: 2s;"></div>
-        <div class="heart" style="top: 40%; left: 80%; animation-delay: 1.5s;"></div>
-    </div>
-    <audio controls>
-        <source src="https://www.bensound.com/bensound-slowmotion.mp3" type="audio/mpeg">
-        Your browser does not support the audio tag.
-    </audio>
-    <br>
-    <button class="button yes">Yes</button>
-    <button class="button no">No</button>
-    <script>
-        const noButton = document.querySelector('.no');
-        noButton.addEventListener('mouseover', () => {
-            noButton.style.transform = 'translateX(100px)';
-        });
-        noButton.addEventListener('mouseleave', () => {
-            noButton.style.transform = 'translateX(0)';
-        });
-    </script>
+
+<div id="box">
+  <h2 id="text">Here is something special for someone special ❤️👑</h2>
+  <p id="message" class="typing"></p>
+  <button id="startBtn" onclick="nextStep()">Click Me ❤️😋</button>
+</div>
+
+<audio id="music" loop>
+  <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mp3">
+  <!-- Replace with any romantic slow tune URL -->
+</audio>
+
+<script>
+let step = 0;
+const messages = [
+  "Hi Ayushi ❤️",
+  "We haven’t met yet…",
+  "But I feel something special about you.",
+  "Strange, right? Still connected somehow…",
+  "I believe some stories are written before we meet.",
+  "I want to spend my life with you… 💖",
+  "Are you ready to adopt a new child", "4 AM ? 😁",
+  "Will you marry me? 💍"
+];
+
+function typeText(element, text, speed=50, callback=null) {
+  element.innerHTML = "";
+  let i = 0;
+  const interval = setInterval(() => {
+    element.innerHTML += text.charAt(i);
+    i++;
+    if(i === text.length) {
+      clearInterval(interval);
+      if(callback) callback();
+    }
+  }, speed);
+}
+
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.style.left = Math.random()*100 + 'vw';
+  heart.style.animationDuration = 3 + Math.random()*3 + 's';
+  document.body.appendChild(heart);
+  setTimeout(()=>document.body.removeChild(heart), 5000);
+}
+
+setInterval(createHeart, 500);
+
+function nextStep(){
+  let textEl = document.getElementById("text");
+  let messageEl = document.getElementById("message");
+  let box = document.getElementById("box");
+  let music = document.getElementById("music");
+
+  if(step === 0) {
+    music.volume = 0.5;
+    music.play().catch(()=>{});
+  }
+
+  step++;
+
+  if(step <= messages.length-1){
+    typeText(textEl, messages[step-1]);
+    typeText(messageEl, "");
+  } else if(step === messages.length){
+    // Clear box content and show Yes/No
+    box.innerHTML = `
+      <h1 style="color:red;">Will you marry me? 💍</h1>
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    `;
+
+    const yes = document.getElementById("yesBtn");
+    yes.onclick = ()=>alert("I knew it! ❤️");
+
+    const no = document.getElementById("noBtn");
+    // Runaway NO button
+    no.onmouseover = ()=> {
+      no.style.position = 'absolute';
+      no.style.top = Math.random()*60 + "%";
+      no.style.left = Math.random()*70 + "%";
+    };
+  }
+}
+</script>
+
 </body>
 </html>
