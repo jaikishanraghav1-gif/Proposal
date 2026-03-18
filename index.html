@@ -1,28 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Interactive GIFs</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal for Ayushi</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+        }
+        .heart {
+            animation: float 3s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Choose Your Response</h1>
-    <button id="yes-button">Yes</button>
-    <button id="no-button">No</button>
-    <div id="gif-display" style="display:none;">
-        <h2>GIFs</h2>
-        <img id="hug-gif" src="hug.gif" alt="Hug GIF" style="display:none;" />
-        <img id="kiss-gif" src="kiss.gif" alt="Kiss GIF" style="display:none;" />
-    </div>
-
+    <h1>Proposal for Ayushi</h1>
+    <div class="heart">❤️</div>
+    <p>As we journey together, I want to express my feelings for you...</p>
+    <audio controls>
+        <source src="slow-motion-music.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <br>
+    <button class="button" id="yesButton">Yes</button>
+    <button class="button" id="noButton">No</button>
     <script>
-        document.getElementById('yes-button').onclick = function() {
-            document.getElementById('gif-display').style.display = 'block';
-            document.getElementById('hug-gif').style.display = 'block';
-            document.getElementById('kiss-gif').style.display = 'block';
-            const audio = new Audio('slow-piano-music.mp3');
-            audio.play();
-        };
-        document.getElementById('no-button').onclick = function() {
-            alert('No response selected.');
+        document.getElementById('noButton').onclick = function() {
+            alert('Don't run away!');
+            // Functionality to make the No button runaway goes here.
         };
     </script>
 </body>
