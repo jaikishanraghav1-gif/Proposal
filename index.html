@@ -2,46 +2,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proposal for Ayushi</title>
+    <title>Proposal</title>
     <style>
         body {
-            text-align: center;
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+        .hearts {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
         }
         .heart {
-            animation: float 3s infinite;
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: red;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            animation: float 5s ease-in infinite;
         }
         @keyframes float {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0); }
+            0% {transform: translateY(0);}
+            50% {transform: translateY(-20px);}
+            100% {transform: translateY(0);}
         }
         .button {
             padding: 10px 20px;
-            font-size: 16px;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            font-size: 1.2em;
             margin: 10px;
+        }
+        .yes {
+            background-color: green;
+            color: white;
+        }
+        .no {
+            background-color: red;
+            color: white;
+        }
+        .no:hover {
+            transition: 0.3s;
+            transform: translateX(20px);
         }
     </style>
 </head>
 <body>
-    <h1>Proposal for Ayushi</h1>
-    <div class="heart">❤️</div>
-    <p>As we journey together, I want to express my feelings for you...</p>
+    <h1>Will you marry me, Ayushi?</h1>
+    <div class="hearts">
+        <div class="heart" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div class="heart" style="top: 30%; left: 50%; animation-delay: 1s;"></div>
+        <div class="heart" style="top: 70%; left: 30%; animation-delay: 2s;"></div>
+        <div class="heart" style="top: 40%; left: 80%; animation-delay: 1.5s;"></div>
+    </div>
     <audio controls>
-        <source src="slow-motion-music.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+        <source src="https://www.bensound.com/bensound-slowmotion.mp3" type="audio/mpeg">
+        Your browser does not support the audio tag.
     </audio>
     <br>
-    <button class="button" id="yesButton">Yes</button>
-    <button class="button" id="noButton">No</button>
+    <button class="button yes">Yes</button>
+    <button class="button no">No</button>
     <script>
-        document.getElementById('noButton').onclick = function() {
-            alert('Don't run away!');
-            // Functionality to make the No button runaway goes here.
-        };
+        const noButton = document.querySelector('.no');
+        noButton.addEventListener('mouseover', () => {
+            noButton.style.transform = 'translateX(100px)';
+        });
+        noButton.addEventListener('mouseleave', () => {
+            noButton.style.transform = 'translateX(0)';
+        });
     </script>
 </body>
 </html>
