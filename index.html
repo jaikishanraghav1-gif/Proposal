@@ -3,247 +3,268 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jai Raghav | Portfolio</title>
+<title>Jai Raghav | Elite Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
 body {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: white;
-  overflow-x: hidden;
+  margin:0;
+  font-family: 'Poppins', sans-serif;
+  background:#020617;
+  color:white;
+  overflow-x:hidden;
 }
 
-/* HERO */
+canvas {
+  position:fixed;
+  top:0;
+  left:0;
+  z-index:-1;
+}
+
 .hero {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-.hero img {
-  width: 140px;
-  border-radius: 50%;
-  border: 3px solid #38bdf8;
-  margin-bottom: 20px;
+.glass {
+  background:rgba(255,255,255,0.05);
+  padding:30px;
+  border-radius:20px;
+  backdrop-filter: blur(15px);
+  text-align:center;
 }
 
-.hero h1 {
-  font-size: 3rem;
+.glass img {
+  width:120px;
+  border-radius:50%;
+  border:3px solid cyan;
 }
 
-.typing {
-  color: #38bdf8;
-  margin-top: 10px;
-  font-size: 1.2rem;
+h1 { font-size:2.5rem; }
+
+.typing { color:cyan; }
+
+.section { padding:80px 10%; }
+
+h2 {
+  border-left:4px solid cyan;
+  padding-left:10px;
+  margin-bottom:20px;
 }
 
-/* SECTION */
-.section {
-  padding: 80px 10%;
-}
-
-.section h2 {
-  margin-bottom: 30px;
-  font-size: 2rem;
-  border-left: 4px solid #38bdf8;
-  padding-left: 10px;
-}
-
-/* CARDS */
-.card {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  margin: 10px 0;
-  border-radius: 15px;
-  transition: 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  background: rgba(56,189,248,0.1);
-}
-
-/* SKILLS */
-.skill {
-  margin-bottom: 15px;
-}
+.skill { margin:15px 0; }
 
 .bar {
-  height: 8px;
-  background: #334155;
-  border-radius: 10px;
-  overflow: hidden;
+  height:8px;
+  background:#1e293b;
+  border-radius:10px;
 }
 
 .fill {
-  height: 100%;
-  background: #38bdf8;
+  height:100%;
+  width:0;
+  background:cyan;
+  transition:2s;
 }
 
-/* PROJECTS */
+.timeline {
+  border-left:2px solid cyan;
+  padding-left:20px;
+}
+
+.timeline div { margin-bottom:20px; }
+
 .projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
 }
 
 .project {
-  padding: 20px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.05);
-  transition: 0.3s;
+  padding:20px;
+  border-radius:15px;
+  background:rgba(255,255,255,0.05);
+  transition:0.3s;
 }
 
 .project:hover {
-  transform: scale(1.05);
+  transform:rotateY(10deg) scale(1.05);
 }
 
-/* SOCIAL */
-.social {
-  position: fixed;
-  right: 20px;
-  top: 40%;
+.hidden {
+  opacity:0;
+  transform:translateY(30px);
+  transition:1s;
 }
 
-.social a {
-  display: block;
-  margin: 10px;
-  color: white;
-  font-size: 20px;
-  text-decoration: none;
+.show {
+  opacity:1;
+  transform:translateY(0);
 }
 
-/* FOOTER */
+a { color:cyan; text-decoration:none; }
+
 footer {
-  text-align: center;
-  padding: 20px;
-  background: #020617;
+  text-align:center;
+  padding:20px;
+  background:#020617;
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- HERO -->
+<canvas id="bg"></canvas>
+
 <div class="hero">
-  <img src="https://via.placeholder.com/150" alt="profile">
-  <h1>Jai Kishan Raghav</h1>
-  <div class="typing" id="typing"></div>
+  <div class="glass">
+    <img src="https://via.placeholder.com/150">
+    <h1>Jai Kishan Raghav</h1>
+    <div class="typing" id="typing"></div>
+  </div>
 </div>
 
-<!-- ABOUT -->
-<div class="section">
-  <h2>About Me</h2>
-  <p>
-    Backend Developer with strong experience in Java, WebSphere, and enterprise applications.
-    Passionate about scalable systems, problem solving, and building impactful tech products.
-  </p>
+<div class="section hidden">
+<h2>About</h2>
+<p>
+Backend Developer specializing in Java, WebSphere, and enterprise-grade systems.
+Passionate about building scalable applications and solving complex problems.
+</p>
 </div>
 
-<!-- SKILLS -->
-<div class="section">
-  <h2>Skills</h2>
+<div class="section hidden">
+<h2>Skills</h2>
 
-  <div class="skill">Java
-    <div class="bar"><div class="fill" style="width:90%"></div></div>
-  </div>
-
-  <div class="skill">Spring Boot
-    <div class="bar"><div class="fill" style="width:85%"></div></div>
-  </div>
-
-  <div class="skill">Microservices
-    <div class="bar"><div class="fill" style="width:80%"></div></div>
-  </div>
-
-  <div class="skill">WebSphere
-    <div class="bar"><div class="fill" style="width:75%"></div></div>
-  </div>
+<div class="skill">Java<div class="bar"><div class="fill" data-width="90%"></div></div></div>
+<div class="skill">Spring Boot<div class="bar"><div class="fill" data-width="85%"></div></div></div>
+<div class="skill">Microservices<div class="bar"><div class="fill" data-width="80%"></div></div></div>
+<div class="skill">WebSphere<div class="bar"><div class="fill" data-width="75%"></div></div></div>
 
 </div>
 
-<!-- EXPERIENCE -->
-<div class="section">
-  <h2>Experience</h2>
-
-  <div class="card">
+<div class="section hidden">
+<h2>Experience</h2>
+<div class="timeline">
+  <div>
     <h3>Infosys – Software Developer</h3>
     <p>
-      Worked on enterprise backend systems, handling APIs, server upgrades,
-      and production-level applications using Java and WebSphere.
+      Worked on enterprise backend systems, API development, and WebSphere server upgrades.
+      Handled production issues and built scalable solutions.
     </p>
   </div>
-
+</div>
 </div>
 
-<!-- PROJECTS -->
-<div class="section">
-  <h2>Projects</h2>
+<div class="section hidden">
+<h2>Projects</h2>
 
-  <div class="projects">
-    <div class="project">Portfolio Website</div>
-    <div class="project">Backend API System</div>
-    <div class="project">AI-based Ideas (In Progress)</div>
+<div class="projects">
+
+  <div class="project">
+    <h3>Enterprise API Gateway</h3>
+    <p>Built scalable gateway for routing, auth, and rate limiting.</p>
+    <p><b>Tech:</b> Java, Spring Boot</p>
+  </div>
+
+  <div class="project">
+    <h3>WebSphere Migration Tool</h3>
+    <p>Automated server upgrades and reduced deployment errors.</p>
+    <p><b>Tech:</b> Java, WebSphere</p>
+  </div>
+
+  <div class="project">
+    <h3>AI Resume Analyzer</h3>
+    <p>AI-based tool to evaluate resumes using NLP.</p>
+    <p><b>Tech:</b> AI/ML</p>
+  </div>
+
+  <div class="project">
+    <h3>Rental System</h3>
+    <p>Backend system for property booking and payments.</p>
+    <p><b>Tech:</b> Java, MySQL</p>
+  </div>
+
+  <div class="project">
+    <h3>Plot Registry Ledger</h3>
+    <p>Secure land registry tracking system.</p>
+    <p><b>Tech:</b> Java</p>
   </div>
 
 </div>
-
-<!-- CONTACT -->
-<div class="section">
-  <h2>Contact</h2>
-  <p>Email: your@email.com</p>
-  <p>
-    <a href="https://www.linkedin.com/in/jai-kishan-raghav-68633a112" target="_blank">
-      LinkedIn Profile
-    </a>
-  </p>
 </div>
 
-<!-- SOCIAL -->
-<div class="social">
-  <a href="https://www.linkedin.com/in/jai-kishan-raghav-68633a112">🔗</a>
+<div class="section hidden">
+<h2>Contact</h2>
+<p>Email: your@email.com</p>
+<p>
+<a href="https://www.linkedin.com/in/jai-kishan-raghav-68633a112" target="_blank">
+LinkedIn Profile
+</a>
+</p>
 </div>
 
 <footer>
-  © 2026 Jai Raghav
+© 2026 Jai Raghav
 </footer>
 
 <script>
-const roles = ["Java Backend Developer", "Problem Solver", "Tech Enthusiast"];
-let i = 0, j = 0, current = "", isDeleting = false;
+// PARTICLES
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-function type() {
-  current = roles[i];
-  if (!isDeleting) {
-    document.getElementById("typing").innerText = current.substring(0, j++);
-    if (j > current.length) {
-      isDeleting = true;
-      setTimeout(type, 1000);
-      return;
-    }
-  } else {
-    document.getElementById("typing").innerText = current.substring(0, j--);
-    if (j === 0) {
-      isDeleting = false;
-      i = (i + 1) % roles.length;
-    }
-  }
-  setTimeout(type, isDeleting ? 50 : 100);
+let particles=[];
+for(let i=0;i<100;i++){
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="white";
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fill();
+});
+requestAnimationFrame(draw);
+}
+draw();
+
+// TYPING
+const roles=["Java Backend Developer","System Designer","Tech Innovator"];
+let i=0,j=0,text="",del=false;
+
+function type(){
+text=roles[i];
+if(!del){
+document.getElementById("typing").innerText=text.substring(0,j++);
+if(j>text.length){del=true;setTimeout(type,1000);return;}
+}else{
+document.getElementById("typing").innerText=text.substring(0,j--);
+if(j==0){del=false;i=(i+1)%roles.length;}
+}
+setTimeout(type, del?50:100);
 }
 type();
+
+// SCROLL ANIMATION
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+entry.target.querySelectorAll(".fill").forEach(el=>{
+el.style.width=el.getAttribute("data-width");
+});
+}
+});
+});
+
+document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
 </script>
 
 </body>
