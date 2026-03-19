@@ -2,39 +2,108 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Proposal ❤️</title>
+<title>Jai Raghav | Portfolio</title>
 <style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg,#ffc0cb,#d8b4fe);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-  }
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+}
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1 { font-size: 3rem; }
+.typing {
+  color: #38bdf8;
+  border-right: 2px solid;
+  padding-right: 5px;
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+.section {
+  padding: 60px;
+}
+.card {
+  background: #1e293b;
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+a {
+  color: #38bdf8;
+}
+</style>
+</head>
 
-  #box {
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    max-width: 350px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    position: relative;
-    z-index: 10;
-  }
+<body>
 
-  button {
-    padding: 10px 20px;
-    margin-top: 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #ff4d6d;
+<div class="hero">
+  <h1>Jai Raghav</h1>
+  <p class="typing" id="typing"></p>
+</div>
+
+<div class="section">
+  <h2>About Me</h2>
+  <p>Backend Developer with experience in Java, WebSphere, and scalable systems.</p>
+</div>
+
+<div class="section">
+  <h2>Skills</h2>
+  <div class="card">Java</div>
+  <div class="card">Spring Boot</div>
+  <div class="card">Microservices</div>
+  <div class="card">WebSphere</div>
+</div>
+
+<div class="section">
+  <h2>Experience</h2>
+  <div class="card">
+    Infosys – Software Developer  
+    <br>Worked on backend systems and enterprise applications.
+  </div>
+</div>
+
+<div class="section">
+  <h2>Contact</h2>
+  <a href="https://www.linkedin.com/in/jai-kishan-raghav-68633a112">
+    LinkedIn Profile
+  </a>
+</div>
+
+<script>
+const text = ["Java Backend Developer", "Problem Solver", "Tech Enthusiast"];
+let i = 0, j = 0, current = "", isDeleting = false;
+
+function type() {
+  current = text[i];
+  if (!isDeleting) {
+    document.getElementById("typing").innerText = current.substring(0, j++);
+    if (j > current.length) {
+      isDeleting = true;
+      setTimeout(type, 1000);
+      return;
+    }
+  } else {
+    document.getElementById("typing").innerText = current.substring(0, j--);
+    if (j === 0) {
+      isDeleting = false;
+      i = (i + 1) % text.length;
+    }
+  }
+  setTimeout(type, isDeleting ? 50 : 100);
+}
+type();
+</script>
+
+</body>
+</html>    background-color: #ff4d6d;
     color: white;
     position: relative;
   }
