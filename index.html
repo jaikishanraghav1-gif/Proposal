@@ -3,168 +3,247 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Proposal ❤️</title>
+<title>Jai Raghav | Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+
 <style>
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg,#ffc0cb,#d8b4fe);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    overflow: hidden;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
 
-  #box {
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    max-width: 350px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    position: relative;
-    z-index: 10;
-  }
+body {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  overflow-x: hidden;
+}
 
-  button {
-    padding: 10px 20px;
-    margin-top: 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #ff4d6d;
-    color: white;
-    position: relative;
-  }
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
 
-  /* Typing effect */
-  .typing {
-    border-right: .15em solid #ff4d6d;
-    white-space: nowrap;
-    overflow: hidden;
-  }
+.hero img {
+  width: 140px;
+  border-radius: 50%;
+  border: 3px solid #38bdf8;
+  margin-bottom: 20px;
+}
 
-  /* Floating hearts */
-  .heart {
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background: red;
-    transform: rotate(-45deg);
-    left: 50%;
-    animation: floatUp 5s linear infinite;
-  }
-  .heart:before,
-  .heart:after {
-    content: '';
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    background: red;
-    border-radius: 50%;
-  }
-  .heart:before {
-    top: -12px;
-    left: 0;
-  }
-  .heart:after {
-    left: 12px;
-    top: 0;
-  }
-  @keyframes floatUp {
-    0% {transform: translateX(0) translateY(0) rotate(-45deg); opacity:1;}
-    100% {transform: translateX(-50px) translateY(-600px) rotate(-45deg); opacity:0;}
-  }
+.hero h1 {
+  font-size: 3rem;
+}
+
+.typing {
+  color: #38bdf8;
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+/* SECTION */
+.section {
+  padding: 80px 10%;
+}
+
+.section h2 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+  border-left: 4px solid #38bdf8;
+  padding-left: 10px;
+}
+
+/* CARDS */
+.card {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 15px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: rgba(56,189,248,0.1);
+}
+
+/* SKILLS */
+.skill {
+  margin-bottom: 15px;
+}
+
+.bar {
+  height: 8px;
+  background: #334155;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: #38bdf8;
+}
+
+/* PROJECTS */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+
+.project {
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.05);
+  transition: 0.3s;
+}
+
+.project:hover {
+  transform: scale(1.05);
+}
+
+/* SOCIAL */
+.social {
+  position: fixed;
+  right: 20px;
+  top: 40%;
+}
+
+.social a {
+  display: block;
+  margin: 10px;
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #020617;
+}
 </style>
+
 </head>
+
 <body>
 
-<div id="box">
-  <h2 id="text">Here is something special for someone special ❤️👑</h2>
-  <p id="message" class="typing"></p>
-  <button id="startBtn" onclick="nextStep()">Click Me ❤️😋</button>
+<!-- HERO -->
+<div class="hero">
+  <img src="https://via.placeholder.com/150" alt="profile">
+  <h1>Jai Kishan Raghav</h1>
+  <div class="typing" id="typing"></div>
 </div>
 
-<audio id="music" loop>
-  <source src="https://www.bensound.com/bensound-music/bensound-slowmotion.mp3" type="audio/mp3">
-  <!-- Replace with any romantic slow tune URL -->
-</audio>
+<!-- ABOUT -->
+<div class="section">
+  <h2>About Me</h2>
+  <p>
+    Backend Developer with strong experience in Java, WebSphere, and enterprise applications.
+    Passionate about scalable systems, problem solving, and building impactful tech products.
+  </p>
+</div>
+
+<!-- SKILLS -->
+<div class="section">
+  <h2>Skills</h2>
+
+  <div class="skill">Java
+    <div class="bar"><div class="fill" style="width:90%"></div></div>
+  </div>
+
+  <div class="skill">Spring Boot
+    <div class="bar"><div class="fill" style="width:85%"></div></div>
+  </div>
+
+  <div class="skill">Microservices
+    <div class="bar"><div class="fill" style="width:80%"></div></div>
+  </div>
+
+  <div class="skill">WebSphere
+    <div class="bar"><div class="fill" style="width:75%"></div></div>
+  </div>
+
+</div>
+
+<!-- EXPERIENCE -->
+<div class="section">
+  <h2>Experience</h2>
+
+  <div class="card">
+    <h3>Infosys – Software Developer</h3>
+    <p>
+      Worked on enterprise backend systems, handling APIs, server upgrades,
+      and production-level applications using Java and WebSphere.
+    </p>
+  </div>
+
+</div>
+
+<!-- PROJECTS -->
+<div class="section">
+  <h2>Projects</h2>
+
+  <div class="projects">
+    <div class="project">Portfolio Website</div>
+    <div class="project">Backend API System</div>
+    <div class="project">AI-based Ideas (In Progress)</div>
+  </div>
+
+</div>
+
+<!-- CONTACT -->
+<div class="section">
+  <h2>Contact</h2>
+  <p>Email: your@email.com</p>
+  <p>
+    <a href="https://www.linkedin.com/in/jai-kishan-raghav-68633a112" target="_blank">
+      LinkedIn Profile
+    </a>
+  </p>
+</div>
+
+<!-- SOCIAL -->
+<div class="social">
+  <a href="https://www.linkedin.com/in/jai-kishan-raghav-68633a112">🔗</a>
+</div>
+
+<footer>
+  © 2026 Jai Raghav
+</footer>
 
 <script>
-let step = 0;
-const messages = [
-  "Hi Ayushi ❤️",
-  "We haven’t met yet…",
-  "But I feel something special about you.",
-  "Strange, right? Still connected somehow…",
-  "I believe some stories are written before we meet.",
-  "I want to spend my life with you… 💖",
-  "Are you ready to adopt a new child", "4 AM ? 😁",
-  "Will you marry me? 💍"
-];
+const roles = ["Java Backend Developer", "Problem Solver", "Tech Enthusiast"];
+let i = 0, j = 0, current = "", isDeleting = false;
 
-function typeText(element, text, speed=50, callback=null) {
-  element.innerHTML = "";
-  let i = 0;
-  const interval = setInterval(() => {
-    element.innerHTML += text.charAt(i);
-    i++;
-    if(i === text.length) {
-      clearInterval(interval);
-      if(callback) callback();
+function type() {
+  current = roles[i];
+  if (!isDeleting) {
+    document.getElementById("typing").innerText = current.substring(0, j++);
+    if (j > current.length) {
+      isDeleting = true;
+      setTimeout(type, 1000);
+      return;
     }
-  }, speed);
-}
-
-function createHeart() {
-  const heart = document.createElement('div');
-  heart.classList.add('heart');
-  heart.style.left = Math.random()*100 + 'vw';
-  heart.style.animationDuration = 3 + Math.random()*3 + 's';
-  document.body.appendChild(heart);
-  setTimeout(()=>document.body.removeChild(heart), 5000);
-}
-
-setInterval(createHeart, 500);
-
-function nextStep(){
-  let textEl = document.getElementById("text");
-  let messageEl = document.getElementById("message");
-  let box = document.getElementById("box");
-  let music = document.getElementById("music");
-
-  if(step === 0) {
-    music.volume = 0.5;
-    music.play().catch(()=>{});
+  } else {
+    document.getElementById("typing").innerText = current.substring(0, j--);
+    if (j === 0) {
+      isDeleting = false;
+      i = (i + 1) % roles.length;
+    }
   }
-
-  step++;
-
-  if(step <= messages.length-1){
-    typeText(textEl, messages[step-1]);
-    typeText(messageEl, "");
-  } else if(step === messages.length){
-    // Clear box content and show Yes/No
-    box.innerHTML = `
-      <h1 style="color:red;">Will you marry me? 💍</h1>
-      <button id="yesBtn">Yes</button>
-      <button id="noBtn">No</button>
-    `;
-
-    const yes = document.getElementById("yesBtn");
-    yes.onclick = ()=>alert("I knew it! ❤️");
-
-    const no = document.getElementById("noBtn");
-    // Runaway NO button
-    no.onmouseover = ()=> {
-      no.style.position = 'absolute';
-      no.style.top = Math.random()*60 + "%";
-      no.style.left = Math.random()*70 + "%";
-    };
-  }
+  setTimeout(type, isDeleting ? 50 : 100);
 }
+type();
 </script>
 
 </body>
