@@ -1,247 +1,340 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jai Raghav | Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jai Kishan Raghav | Portfolio</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+    <!-- Tailwind Config for Custom Colors/Fonts -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            400: '#2dd4bf',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            900: '#134e4a',
+                        },
+                        dark: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
-<style>
-body {
-  margin:0;
-  font-family:'Inter',sans-serif;
-  background: radial-gradient(circle at top, #0f172a, #020617);
-  color:white;
-}
+    <style>
+        /* Custom Styles & Animations */
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
 
-/* NAVBAR */
-nav {
-  display:flex;
-  justify-content:space-between;
-  padding:20px 8%;
-  backdrop-filter: blur(10px);
-  position:sticky;
-  top:0;
-}
+        /* Glassmorphism */
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
-nav h2 {color:#22c55e;}
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #14b8a6;
+        }
 
-nav a {
-  margin-left:20px;
-  color:white;
-  text-decoration:none;
-}
+        /* Reveal Animation on Scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
-/* HERO */
-.hero {
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-align:center;
-}
-
-.hero h1 {
-  font-size:65px;
-}
-
-.hero span {color:#22c55e;}
-
-.typing {
-  margin-top:10px;
-  color:#94a3b8;
-  font-size:20px;
-}
-
-/* SECTION */
-section {
-  padding:80px 8%;
-}
-
-.title {
-  font-size:32px;
-  margin-bottom:30px;
-  color:#22c55e;
-}
-
-/* CARD */
-.card {
-  background:rgba(255,255,255,0.05);
-  padding:25px;
-  border-radius:16px;
-  backdrop-filter: blur(10px);
-  transition:0.3s;
-}
-
-.card:hover {
-  transform:translateY(-10px) scale(1.02);
-}
-
-/* TIMELINE */
-.timeline {
-  position:relative;
-  margin-left:20px;
-}
-
-.timeline::before {
-  content:"";
-  position:absolute;
-  left:0;
-  top:0;
-  width:3px;
-  height:100%;
-  background:#22c55e;
-}
-
-.timeline-item {
-  margin-bottom:40px;
-  padding-left:25px;
-  position:relative;
-}
-
-.timeline-item::before {
-  content:"";
-  position:absolute;
-  left:-8px;
-  width:16px;
-  height:16px;
-  background:#22c55e;
-  border-radius:50%;
-}
-
-/* PROJECT GRID */
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-  gap:25px;
-}
-
-/* CONTACT */
-.contact p {
-  margin:10px 0;
-}
-
-/* FOOTER */
-footer {
-  text-align:center;
-  padding:20px;
-  color:#64748b;
-}
-</style>
+        /* Timeline specific styles */
+        .timeline-dot {
+            box-shadow: 0 0 0 4px #0f172a, 0 0 0 6px #14b8a6;
+        }
+        
+        /* Gradient Text */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #2dd4bf, #3b82f6);
+        }
+    </style>
 </head>
+<body class="antialiased selection:bg-brand-500 selection:text-white relative">
 
-<body>
-
-<nav>
-  <h2>Jai</h2>
-  <div>
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<div class="hero">
-  <h1>Hi, I'm <span>Jai Raghav</span></h1>
-  <div class="typing" id="typing"></div>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="title">About Me</div>
-  <div class="card">
-    Backend Developer at Infosys with experience in building scalable enterprise applications using Java, Spring Boot, and Microservices architecture. Passionate about system design, performance optimization, and creating real-world impact through technology.
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="title">Experience</div>
-
-  <div class="timeline">
-
-    <div class="timeline-item">
-      <h3>Senior System Engineer — Infosys</h3>
-      <p>2022 — Present</p>
-      <p>
-        Working on enterprise-grade backend systems, REST APIs, and distributed microservices. 
-        Handling production issues, deployments, and performance tuning.
-      </p>
+    <!-- Background Ambient Effects -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-brand-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+        <div class="absolute top-[20%] right-[-10%] w-96 h-96 bg-blue-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
+        <div class="absolute bottom-[-20%] left-[20%] w-96 h-96 bg-purple-500/20 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-4000"></div>
     </div>
 
-    <div class="timeline-item">
-      <h3>System Engineer — Infosys</h3>
-      <p>2020 — 2022</p>
-      <p>
-        Developed backend services, optimized database queries, and contributed to large-scale applications.
-      </p>
-    </div>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="text-2xl font-bold tracking-tighter text-white">
+                    JK<span class="text-brand-400">R.</span>
+                </a>
+                
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">About</a>
+                    <a href="#experience" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Experience</a>
+                    <a href="#skills" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Skills</a>
+                    <a href="#contact" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Contact</a>
+                </div>
 
-  </div>
-</section>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-300 hover:text-white focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="title">Projects</div>
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass absolute w-full border-b border-slate-700/50 shadow-2xl">
+            <div class="px-4 pt-2 pb-6 space-y-2 flex flex-col">
+                <a href="#about" class="mobile-link block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg">About</a>
+                <a href="#experience" class="mobile-link block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg">Experience</a>
+                <a href="#skills" class="mobile-link block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg">Skills</a>
+                <a href="#contact" class="mobile-link block px-3 py-3 text-base font-medium text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-  <div class="grid">
+    <!-- Main Content Area -->
+    <main class="relative z-10">
+        
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center pt-20 px-6">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <span class="inline-block py-1 px-3 rounded-full bg-brand-500/10 text-brand-400 text-sm font-semibold mb-6 border border-brand-500/20">
+                    Available for new opportunities
+                </span>
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+                    Hi, I'm <br class="md:hidden">
+                    <span class="text-gradient">Jai Kishan Raghav</span>
+                </h1>
+                <p class="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    I build exceptional and accessible digital experiences. Passionate about creating elegant solutions to complex problems through clean, efficient code.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#contact" class="w-full sm:w-auto px-8 py-4 bg-brand-500 hover:bg-brand-600 text-white rounded-xl font-semibold transition-all shadow-lg shadow-brand-500/25 flex items-center justify-center gap-2">
+                        Get In Touch <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="https://github.com/your-github-username" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white rounded-xl font-semibold transition-all border border-slate-700 flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-github text-xl"></i> View GitHub
+                    </a>
+                </div>
+                
+                <!-- Social Links Minimal -->
+                <div class="mt-12 flex justify-center space-x-6 text-slate-400">
+                    <a href="https://www.linkedin.com/in/jai-kishan-raghav-68633a112" target="_blank" class="hover:text-brand-400 transition-colors transform hover:-translate-y-1 duration-200">
+                        <i class="fa-brands fa-linkedin text-3xl"></i>
+                    </a>
+                    <a href="https://github.com/your-github-username" target="_blank" class="hover:text-brand-400 transition-colors transform hover:-translate-y-1 duration-200">
+                        <i class="fa-brands fa-github text-3xl"></i>
+                    </a>
+                    <a href="mailto:your.email@example.com" class="hover:text-brand-400 transition-colors transform hover:-translate-y-1 duration-200">
+                        <i class="fa-solid fa-envelope text-3xl"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
 
-    <div class="card">
-      <h3>AI Log Analyzer</h3>
-      <p>AI-based tool to analyze logs and improve debugging productivity.</p>
-    </div>
+        <!-- Experience Timeline Section (LinkedIn Style) -->
+        <section id="experience" class="py-24 px-6 relative">
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-16 text-center reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Experience & Education</h2>
+                    <div class="w-20 h-1 bg-brand-500 mx-auto rounded-full"></div>
+                </div>
 
-    <div class="card">
-      <h3>Portfolio Generator SaaS</h3>
-      <p>Platform to auto-generate developer portfolios using AI.</p>
-    </div>
+                <!-- Timeline Container -->
+                <div class="relative border-l-2 border-slate-700 ml-4 md:ml-6 space-y-12 pb-8">
+                    
+                    <!-- Timeline Item 1 -->
+                    <div class="relative ml-8 md:ml-12 reveal">
+                        <!-- Dot -->
+                        <span class="absolute -left-[41px] md:-left-[57px] top-1.5 w-4 h-4 rounded-full bg-brand-500 timeline-dot"></span>
+                        
+                        <!-- Content Card -->
+                        <div class="glass p-6 md:p-8 rounded-2xl hover:-translate-y-1 transition-transform duration-300 group">
+                            <div class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition-colors">Senior Software Engineer</h3>
+                                    <h4 class="text-lg text-slate-300 font-medium">Tech Innovators Inc.</h4>
+                                </div>
+                                <span class="inline-block px-3 py-1 bg-slate-800 text-brand-400 text-sm font-semibold rounded-full border border-slate-700 whitespace-nowrap">
+                                    2023 - Present
+                                </span>
+                            </div>
+                            <p class="text-slate-400 leading-relaxed mb-4">
+                                Spearheaded the development of scalable microservices, improving system performance by 40%. Led a team of 5 developers in redesigning the core application architecture.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-slate-800/80 text-slate-300 text-xs rounded-md border border-slate-700">React</span>
+                                <span class="px-2.5 py-1 bg-slate-800/80 text-slate-300 text-xs rounded-md border border-slate-700">Node.js</span>
+                                <span class="px-2.5 py-1 bg-slate-800/80 text-slate-300 text-xs rounded-md border border-slate-700">AWS</span>
+                            </div>
+                        </div>
+                    </div>
 
-    <div class="card">
-      <h3>Property Registry System</h3>
-      <p>Blockchain-inspired ledger system for land registry tracking.</p>
-    </div>
+                    <!-- Timeline Item 2 -->
+                    <div class="relative ml-8 md:ml-12 reveal">
+                        <span class="absolute -left-[41px] md:-left-[57px] top-1.5 w-4 h-4 rounded-full bg-slate-500 timeline-dot border-2 border-slate-800"></span>
+                        
+                        <div class="glass p-6 md:p-8 rounded-2xl hover:-translate-y-1 transition-transform duration-300 group">
+                            <div class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
+                                <div>
+                                    <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition-colors">Frontend Developer</h3>
+                                    <h4 class="text-lg text-slate-300 font-medium">Creative Agency Co.</h4>
+                                </div>
+                                <span class="inline-block px-3 py-1 bg-slate-800 text-slate-300 text-sm font-semibold rounded-full border border-slate-700 whitespace-nowrap">
+                                    2021 - 2023
+                                </span>
+                            </div>
+                            <p class="text-slate-400 leading-relaxed mb-4">
+                                Developed responsive, pixel-perfect user interfaces for high-profile clients. Collaborated closely with designers to implement complex animations and interactive elements.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-2.5 py-1 bg-slate-800/80 text-slate-300 text-xs rounded-md border border-slate-700">Vue.js</span>
+                                <span class="px-2.5 py-1 bg-slate-800/80 text-slate-300 text-xs rounded-md border border-slate-700">Tailwind CSS</span>
+                                <span class="px-2.5 py-1 bg-slate-800/80 text-slate-300 text-xs rounded-md border border-slate-700">Figma</span>
+                            </div>
+                        </div>
+                    </div>
 
-  </div>
-</section>
+                    <!-- Timeline Item 3 (Education) -->
+                    <div class="relative ml-8 md:ml-12 reveal">
+                        <span class="absolute -left-[41px] md:-left-[57px] top-1.5 w-4 h-4 rounded-full bg-slate-500 timeline-dot border-2 border-slate-800"></span>
+                        
+                        <div class="glass p-6 md:p-8 rounded-2xl hover:-translate-y-1 transition-transform duration-300 group relative overflow-hidden">
+                            <!-- Education Icon Watermark -->
+                            <i class="fa-solid fa-graduation-cap absolute -right-6 -bottom-6 text-8xl text-slate-800/40 transform -rotate-12"></i>
+                            
+                            <div class="relative z-10">
+                                <div class="flex flex-col md:flex-row md:items-start justify-between mb-4 gap-2">
+                                    <div>
+                                        <h3 class="text-xl font-bold text-white group-hover:text-brand-400 transition-colors">Bachelor of Computer Science</h3>
+                                        <h4 class="text-lg text-slate-300 font-medium">University of Technology</h4>
+                                    </div>
+                                    <span class="inline-block px-3 py-1 bg-slate-800 text-slate-300 text-sm font-semibold rounded-full border border-slate-700 whitespace-nowrap">
+                                        2017 - 2021
+                                    </span>
+                                </div>
+                                <p class="text-slate-400 leading-relaxed">
+                                    Graduated with First Class Honors. Specialized in Software Engineering and Human-Computer Interaction. Built foundational knowledge in algorithms, data structures, and system design.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="title">Contact</div>
+                </div>
+            </div>
+        </section>
 
-  <div class="card contact">
-    <p>Email: your-email@gmail.com</p>
-    <p>LinkedIn: linkedin.com/in/jai-kishan-raghav-68633a112</p>
-  </div>
-</section>
+        <!-- Skills Section -->
+        <section id="skills" class="py-24 px-6 bg-slate-900/50">
+            <div class="max-w-5xl mx-auto">
+                <div class="mb-16 text-center reveal">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Technical Arsenal</h2>
+                    <div class="w-20 h-1 bg-brand-500 mx-auto rounded-full"></div>
+                </div>
 
-<footer>
-  © 2026 Jai Raghav
-</footer>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 reveal">
+                    <!-- Skill Card -->
+                    <div class="glass p-6 rounded-xl text-center hover:bg-slate-800/80 transition-all border border-slate-700/50 hover:border-brand-500/50 group">
+                        <i class="fa-brands fa-html5 text-4xl text-orange-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="font-semibold">HTML5 & CSS3</h3>
+                    </div>
+                    <div class="glass p-6 rounded-xl text-center hover:bg-slate-800/80 transition-all border border-slate-700/50 hover:border-brand-500/50 group">
+                        <i class="fa-brands fa-js text-4xl text-yellow-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="font-semibold">JavaScript (ES6+)</h3>
+                    </div>
+                    <div class="glass p-6 rounded-xl text-center hover:bg-slate-800/80 transition-all border border-slate-700/50 hover:border-brand-500/50 group">
+                        <i class="fa-brands fa-react text-4xl text-cyan-400 mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="font-semibold">React & Redux</h3>
+                    </div>
+                    <div class="glass p-6 rounded-xl text-center hover:bg-slate-800/80 transition-all border border-slate-700/50 hover:border-brand-500/50 group">
+                        <i class="fa-brands fa-node-js text-4xl text-green-500 mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="font-semibold">Node.js</h3>
+                    </div>
+                    <!-- Add more skills as needed -->
+                </div>
+            </div>
+        </section>
 
-<script>
-const roles = ["Backend Developer","Java Specialist","System Designer"];
-let i=0,j=0,current="",del=false;
+        <!-- Contact Section -->
+        <section id="contact" class="py-24 px-6 relative">
+            <div class="max-w-4xl mx-auto reveal">
+                <div class="glass rounded-3xl p-8 md:p-16 border border-slate-700/50 relative overflow-hidden text-center">
+                    <!-- Decorative background element -->
+                    <div class="absolute top-0 right-0 -mt-16 -mr-16 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                    
+                    <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Connect</h2>
+                    <p class="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
+                        Whether you have a question, a project idea, or just want to say hi, I'll try my best to get back to you! My inbox is always open.
+                    </p>
 
-function type(){
-  current=roles[i];
-  document.getElementById("typing").innerText=current.substring(0,j);
-
-  if(!del && j<current.length){
-    j++; setTimeout(type,100);
-  } else if(del && j>0){
-    j--; setTimeout(type,50);
-  } else {
-    del=!del;
-    if(!del) i=(i+1)%roles.length;
-    setTimeout(type,1000);
-  }
-}
-type();
-</script>
-
-</body>
-</html>
+                    <div class="flex flex-col sm:flex-row justify-center items-center gap-6">
+                        <!-- Direct Email Button -->
+                        <a href="mailto:your.email@example.com" class="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 hover:bg-slate-200 rounded-xl font-bold transition-all shadow-lg flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-paper-plane"></i> Say Hello
+                        </a>
+                        
+                        <!-- LinkedI
