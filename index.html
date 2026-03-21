@@ -3,25 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
+<title>Jai Raghav | Portfolio</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
 body {
   margin:0;
-  font-family: 'Inter', sans-serif;
-  background:#0b0b0b;
+  font-family:'Inter',sans-serif;
+  background: radial-gradient(circle at top, #0f172a, #020617);
   color:white;
 }
 
+/* NAVBAR */
 nav {
   display:flex;
   justify-content:space-between;
   padding:20px 8%;
+  backdrop-filter: blur(10px);
+  position:sticky;
+  top:0;
 }
 
-nav h2 {color:#00ffd1;}
+nav h2 {color:#22c55e;}
 
 nav a {
   margin-left:20px;
@@ -29,8 +33,9 @@ nav a {
   text-decoration:none;
 }
 
+/* HERO */
 .hero {
-  height:90vh;
+  height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -39,47 +44,90 @@ nav a {
 }
 
 .hero h1 {
-  font-size:55px;
+  font-size:65px;
 }
 
-.hero span {color:#00ffd1;}
+.hero span {color:#22c55e;}
 
 .typing {
   margin-top:10px;
-  color:#aaa;
+  color:#94a3b8;
+  font-size:20px;
 }
 
+/* SECTION */
 section {
   padding:80px 8%;
 }
 
 .title {
-  color:#00ffd1;
-  font-size:28px;
-  margin-bottom:20px;
+  font-size:32px;
+  margin-bottom:30px;
+  color:#22c55e;
 }
 
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
+/* CARD */
 .card {
-  background:#141414;
-  padding:20px;
-  border-radius:12px;
+  background:rgba(255,255,255,0.05);
+  padding:25px;
+  border-radius:16px;
+  backdrop-filter: blur(10px);
   transition:0.3s;
 }
 
 .card:hover {
-  transform:translateY(-10px);
+  transform:translateY(-10px) scale(1.02);
 }
 
+/* TIMELINE */
+.timeline {
+  position:relative;
+  margin-left:20px;
+}
+
+.timeline::before {
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  width:3px;
+  height:100%;
+  background:#22c55e;
+}
+
+.timeline-item {
+  margin-bottom:40px;
+  padding-left:25px;
+  position:relative;
+}
+
+.timeline-item::before {
+  content:"";
+  position:absolute;
+  left:-8px;
+  width:16px;
+  height:16px;
+  background:#22c55e;
+  border-radius:50%;
+}
+
+/* PROJECT GRID */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:25px;
+}
+
+/* CONTACT */
+.contact p {
+  margin:10px 0;
+}
+
+/* FOOTER */
 footer {
   text-align:center;
   padding:20px;
-  color:#777;
+  color:#64748b;
 }
 </style>
 </head>
@@ -87,46 +135,95 @@ footer {
 <body>
 
 <nav>
-  <h2>YourName</h2>
+  <h2>Jai</h2>
   <div>
     <a href="#about">About</a>
-    <a href="#work">Work</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero">
-  <h1>Hi, I'm <span>Your Name</span></h1>
+  <h1>Hi, I'm <span>Jai Raghav</span></h1>
   <div class="typing" id="typing"></div>
 </div>
 
+<!-- ABOUT -->
 <section id="about">
   <div class="title">About Me</div>
-  <p>
-    Write your introduction here. Replace this text with your experience, skills, and background.
-  </p>
-</section>
-
-<section id="work">
-  <div class="title">Projects</div>
-  <div class="grid">
-    <div class="card">Project Title 1</div>
-    <div class="card">Project Title 2</div>
-    <div class="card">Project Title 3</div>
+  <div class="card">
+    Backend Developer at Infosys with experience in building scalable enterprise applications using Java, Spring Boot, and Microservices architecture. Passionate about system design, performance optimization, and creating real-world impact through technology.
   </div>
 </section>
 
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="title">Experience</div>
+
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <h3>Senior System Engineer — Infosys</h3>
+      <p>2022 — Present</p>
+      <p>
+        Working on enterprise-grade backend systems, REST APIs, and distributed microservices. 
+        Handling production issues, deployments, and performance tuning.
+      </p>
+    </div>
+
+    <div class="timeline-item">
+      <h3>System Engineer — Infosys</h3>
+      <p>2020 — 2022</p>
+      <p>
+        Developed backend services, optimized database queries, and contributed to large-scale applications.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="title">Projects</div>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>AI Log Analyzer</h3>
+      <p>AI-based tool to analyze logs and improve debugging productivity.</p>
+    </div>
+
+    <div class="card">
+      <h3>Portfolio Generator SaaS</h3>
+      <p>Platform to auto-generate developer portfolios using AI.</p>
+    </div>
+
+    <div class="card">
+      <h3>Property Registry System</h3>
+      <p>Blockchain-inspired ledger system for land registry tracking.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
 <section id="contact">
   <div class="title">Contact</div>
-  <p>Email: your@email.com</p>
+
+  <div class="card contact">
+    <p>Email: your-email@gmail.com</p>
+    <p>LinkedIn: linkedin.com/in/jai-kishan-raghav-68633a112</p>
+  </div>
 </section>
 
 <footer>
-  © 2026 Your Name
+  © 2026 Jai Raghav
 </footer>
 
 <script>
-const roles = ["Developer", "Designer", "Freelancer"];
+const roles = ["Backend Developer","Java Specialist","System Designer"];
 let i=0,j=0,current="",del=false;
 
 function type(){
