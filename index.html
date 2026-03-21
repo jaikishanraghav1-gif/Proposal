@@ -1,271 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jai Raghav | Elite Portfolio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-
-<style>
-body {
-  margin:0;
-  font-family: 'Poppins', sans-serif;
-  background:#020617;
-  color:white;
-  overflow-x:hidden;
-}
-
-canvas {
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:-1;
-}
-
-.hero {
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-.glass {
-  background:rgba(255,255,255,0.05);
-  padding:30px;
-  border-radius:20px;
-  backdrop-filter: blur(15px);
-  text-align:center;
-}
-
-.glass img {
-  width:120px;
-  border-radius:50%;
-  border:3px solid cyan;
-}
-
-h1 { font-size:2.5rem; }
-
-.typing { color:cyan; }
-
-.section { padding:80px 10%; }
-
-h2 {
-  border-left:4px solid cyan;
-  padding-left:10px;
-  margin-bottom:20px;
-}
-
-.skill { margin:15px 0; }
-
-.bar {
-  height:8px;
-  background:#1e293b;
-  border-radius:10px;
-}
-
-.fill {
-  height:100%;
-  width:0;
-  background:cyan;
-  transition:2s;
-}
-
-.timeline {
-  border-left:2px solid cyan;
-  padding-left:20px;
-}
-
-.timeline div { margin-bottom:20px; }
-
-.projects {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
-}
-
-.project {
-  padding:20px;
-  border-radius:15px;
-  background:rgba(255,255,255,0.05);
-  transition:0.3s;
-}
-
-.project:hover {
-  transform:rotateY(10deg) scale(1.05);
-}
-
-.hidden {
-  opacity:0;
-  transform:translateY(30px);
-  transition:1s;
-}
-
-.show {
-  opacity:1;
-  transform:translateY(0);
-}
-
-a { color:cyan; text-decoration:none; }
-
-footer {
-  text-align:center;
-  padding:20px;
-  background:#020617;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jai Raghav | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    body { background:#0f172a; color:white; }
+    .glow { text-shadow: 0 0 10px #38bdf8; }
+  </style>
 </head>
-
 <body>
 
-<canvas id="bg"></canvas>
+<!-- Hero Section -->
+<section class="h-screen flex flex-col justify-center items-center text-center">
+  <h1 class="text-5xl font-bold glow">Hi, I'm Jai Raghav</h1>
+  <p class="mt-4 text-xl text-gray-300">Java Backend Developer | AI Enthusiast</p>
+</section>
 
-<div class="hero">
-  <div class="glass">
-    <img src="https://via.placeholder.com/150">
-    <h1>Jai Kishan Raghav</h1>
-    <div class="typing" id="typing"></div>
+<!-- About -->
+<section class="p-10 max-w-4xl mx-auto">
+  <h2 class="text-3xl font-semibold mb-4">About Me</h2>
+  <p class="text-gray-300">I am a passionate backend developer working with Java and exploring AI-based products. I love building scalable systems and modern web experiences.</p>
+</section>
+
+<!-- Skills -->
+<section class="p-10 bg-gray-900">
+  <h2 class="text-3xl font-semibold mb-4 text-center">Skills</h2>
+  <div class="flex flex-wrap justify-center gap-4">
+    <span class="bg-blue-500 px-4 py-2 rounded">Java</span>
+    <span class="bg-green-500 px-4 py-2 rounded">Spring Boot</span>
+    <span class="bg-purple-500 px-4 py-2 rounded">AI</span>
+    <span class="bg-pink-500 px-4 py-2 rounded">React</span>
   </div>
-</div>
+</section>
 
-<div class="section hidden">
-<h2>About</h2>
-<p>
-Backend Developer specializing in Java, WebSphere, and enterprise-grade systems.
-Passionate about building scalable applications and solving complex problems.
-</p>
-</div>
-
-<div class="section hidden">
-<h2>Skills</h2>
-
-<div class="skill">Java<div class="bar"><div class="fill" data-width="90%"></div></div></div>
-<div class="skill">Spring Boot<div class="bar"><div class="fill" data-width="85%"></div></div></div>
-<div class="skill">Microservices<div class="bar"><div class="fill" data-width="80%"></div></div></div>
-<div class="skill">WebSphere<div class="bar"><div class="fill" data-width="75%"></div></div></div>
-
-</div>
-
-<div class="section hidden">
-<h2>Experience</h2>
-<div class="timeline">
-  <div>
-    <h3>Infosys – Software Developer</h3>
-    <p>
-      Worked on enterprise backend systems, API development, and WebSphere server upgrades.
-      Handled production issues and built scalable solutions.
-    </p>
+<!-- Projects -->
+<section class="p-10 max-w-5xl mx-auto">
+  <h2 class="text-3xl font-semibold mb-6">Projects</h2>
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="bg-gray-800 p-5 rounded">
+      <h3 class="text-xl font-bold">AI SaaS Tool</h3>
+      <p class="text-gray-400">A platform to generate content using AI.</p>
+    </div>
+    <div class="bg-gray-800 p-5 rounded">
+      <h3 class="text-xl font-bold">Portfolio Website</h3>
+      <p class="text-gray-400">Modern animated personal portfolio.</p>
+    </div>
   </div>
-</div>
-</div>
+</section>
 
-<div class="section hidden">
-<h2>Projects</h2>
-
-<div class="projects">
-
-  <div class="project">
-    <h3>Enterprise API Gateway</h3>
-    <p>Built scalable gateway for routing, auth, and rate limiting.</p>
-    <p><b>Tech:</b> Java, Spring Boot</p>
-  </div>
-
-  <div class="project">
-    <h3>WebSphere Migration Tool</h3>
-    <p>Automated server upgrades and reduced deployment errors.</p>
-    <p><b>Tech:</b> Java, WebSphere</p>
-  </div>
-
-  <div class="project">
-    <h3>AI Resume Analyzer</h3>
-    <p>AI-based tool to evaluate resumes using NLP.</p>
-    <p><b>Tech:</b> AI/ML</p>
-  </div>
-
-  <div class="project">
-    <h3>Rental System</h3>
-    <p>Backend system for property booking and payments.</p>
-    <p><b>Tech:</b> Java, MySQL</p>
-  </div>
-
-  <div class="project">
-    <h3>Plot Registry Ledger</h3>
-    <p>Secure land registry tracking system.</p>
-    <p><b>Tech:</b> Java</p>
-  </div>
-
-</div>
-</div>
-
-<div class="section hidden">
-<h2>Contact</h2>
-<p>Email: your@email.com</p>
-<p>
-<a href="https://www.linkedin.com/in/jai-kishan-raghav-68633a112" target="_blank">
-LinkedIn Profile
-</a>
-</p>
-</div>
-
-<footer>
-© 2026 Jai Raghav
-</footer>
-
-<script>
-// PARTICLES
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles=[];
-for(let i=0;i<100;i++){
-particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2});
-}
-
-function draw(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle="white";
-particles.forEach(p=>{
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fill();
-});
-requestAnimationFrame(draw);
-}
-draw();
-
-// TYPING
-const roles=["Java Backend Developer","System Designer","Tech Innovator"];
-let i=0,j=0,text="",del=false;
-
-function type(){
-text=roles[i];
-if(!del){
-document.getElementById("typing").innerText=text.substring(0,j++);
-if(j>text.length){del=true;setTimeout(type,1000);return;}
-}else{
-document.getElementById("typing").innerText=text.substring(0,j--);
-if(j==0){del=false;i=(i+1)%roles.length;}
-}
-setTimeout(type, del?50:100);
-}
-type();
-
-// SCROLL ANIMATION
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){
-entry.target.classList.add("show");
-entry.target.querySelectorAll(".fill").forEach(el=>{
-el.style.width=el.getAttribute("data-width");
-});
-}
-});
-});
-
-document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
-</script>
+<!-- Contact -->
+<section class="p-10 bg-gray-900 text-center">
+  <h2 class="text-3xl font-semibold mb-4">Contact</h2>
+  <p class="text-gray-300">Email: jai@example.com</p>
+</section>
 
 </body>
 </html>
