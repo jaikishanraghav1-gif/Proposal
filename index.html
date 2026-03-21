@@ -3,245 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jai Raghav | Portfolio</title>
+<title>Portfolio</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
 body {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: white;
-  overflow-x: hidden;
+  margin:0;
+  font-family: 'Inter', sans-serif;
+  background:#0b0b0b;
+  color:white;
 }
 
-/* HERO */
+nav {
+  display:flex;
+  justify-content:space-between;
+  padding:20px 8%;
+}
+
+nav h2 {color:#00ffd1;}
+
+nav a {
+  margin-left:20px;
+  color:white;
+  text-decoration:none;
+}
+
 .hero {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-}
-
-.hero img {
-  width: 140px;
-  border-radius: 50%;
-  border: 3px solid #38bdf8;
-  margin-bottom: 20px;
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size:55px;
 }
+
+.hero span {color:#00ffd1;}
 
 .typing {
-  color: #38bdf8;
-  margin-top: 10px;
-  font-size: 1.2rem;
+  margin-top:10px;
+  color:#aaa;
 }
 
-/* SECTION */
-.section {
-  padding: 80px 10%;
+section {
+  padding:80px 8%;
 }
 
-.section h2 {
-  margin-bottom: 30px;
-  font-size: 2rem;
-  border-left: 4px solid #38bdf8;
-  padding-left: 10px;
+.title {
+  color:#00ffd1;
+  font-size:28px;
+  margin-bottom:20px;
 }
 
-/* CARDS */
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
 .card {
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  padding: 20px;
-  margin: 10px 0;
-  border-radius: 15px;
-  transition: 0.3s;
+  background:#141414;
+  padding:20px;
+  border-radius:12px;
+  transition:0.3s;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  background: rgba(56,189,248,0.1);
+  transform:translateY(-10px);
 }
 
-/* SKILLS */
-.skill {
-  margin-bottom: 15px;
-}
-
-.bar {
-  height: 8px;
-  background: #334155;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.fill {
-  height: 100%;
-  background: #38bdf8;
-}
-
-/* PROJECTS */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
-  gap: 20px;
-}
-
-.project {
-  padding: 20px;
-  border-radius: 15px;
-  background: rgba(255,255,255,0.05);
-  transition: 0.3s;
-}
-
-.project:hover {
-  transform: scale(1.05);
-}
-
-/* SOCIAL */
-.social {
-  position: fixed;
-  right: 20px;
-  top: 40%;
-}
-
-.social a {
-  display: block;
-  margin: 10px;
-  color: white;
-  font-size: 20px;
-  text-decoration: none;
-}
-
-/* FOOTER */
 footer {
-  text-align: center;
-  padding: 20px;
-  background: #020617;
+  text-align:center;
+  padding:20px;
+  color:#777;
 }
 </style>
-
 </head>
 
 <body>
 
-<!-- HERO -->
+<nav>
+  <h2>YourName</h2>
+  <div>
+    <a href="#about">About</a>
+    <a href="#work">Work</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
 <div class="hero">
-  <img src="https://via.placeholder.com/150" alt="profile">
-  <h1>Jai Kishan Raghav</h1>
+  <h1>Hi, I'm <span>Your Name</span></h1>
   <div class="typing" id="typing"></div>
 </div>
 
-<!-- ABOUT -->
-<div class="section">
-  <h2>About Me</h2>
+<section id="about">
+  <div class="title">About Me</div>
   <p>
-    Backend Developer with strong experience in Java, WebSphere, and enterprise applications.
-    Passionate about scalable systems, problem solving, and building impactful tech products.
+    Write your introduction here. Replace this text with your experience, skills, and background.
   </p>
-</div>
+</section>
 
-<!-- SKILLS -->
-<div class="section">
-  <h2>Skills</h2>
-
-  <div class="skill">Java
-    <div class="bar"><div class="fill" style="width:90%"></div></div>
+<section id="work">
+  <div class="title">Projects</div>
+  <div class="grid">
+    <div class="card">Project Title 1</div>
+    <div class="card">Project Title 2</div>
+    <div class="card">Project Title 3</div>
   </div>
+</section>
 
-  <div class="skill">Spring Boot
-    <div class="bar"><div class="fill" style="width:85%"></div></div>
-  </div>
-
-  <div class="skill">Microservices
-    <div class="bar"><div class="fill" style="width:80%"></div></div>
-  </div>
-
-  <div class="skill">WebSphere
-    <div class="bar"><div class="fill" style="width:75%"></div></div>
-  </div>
-
-</div>
-
-<!-- EXPERIENCE -->
-<div class="section">
-  <h2>Experience</h2>
-
-  <div class="card">
-    <h3>Infosys – Software Developer</h3>
-    <p>
-      Worked on enterprise backend systems, handling APIs, server upgrades,
-      and production-level applications using Java and WebSphere.
-    </p>
-  </div>
-
-</div>
-
-<!-- PROJECTS -->
-<div class="section">
-  <h2>Projects</h2>
-
-  <div class="projects">
-    <div class="project">Portfolio Website</div>
-    <div class="project">Backend API System</div>
-    <div class="project">AI-based Ideas (In Progress)</div>
-  </div>
-
-</div>
-
-<!-- CONTACT -->
-<div class="section">
-  <h2>Contact</h2>
+<section id="contact">
+  <div class="title">Contact</div>
   <p>Email: your@email.com</p>
-  <p>
-    <a href="https://www.linkedin.com/in/jai-kishan-raghav-68633a112" target="_blank">
-      LinkedIn Profile
-    </a>
-  </p>
-</div>
-
-<!-- SOCIAL -->
-<div class="social">
-  <a href="https://www.linkedin.com/in/jai-kishan-raghav-68633a112">🔗</a>
-</div>
+</section>
 
 <footer>
-  © 2026 Jai Raghav
+  © 2026 Your Name
 </footer>
 
 <script>
-const roles = ["Java Backend Developer", "Problem Solver", "Tech Enthusiast"];
-let i = 0, j = 0, current = "", isDeleting = false;
+const roles = ["Developer", "Designer", "Freelancer"];
+let i=0,j=0,current="",del=false;
 
-function type() {
-  current = roles[i];
-  if (!isDeleting) {
-    document.getElementById("typing").innerText = current.substring(0, j++);
-    if (j > current.length) {
-      isDeleting = true;
-      setTimeout(type, 1000);
-      return;
-    }
+function type(){
+  current=roles[i];
+  document.getElementById("typing").innerText=current.substring(0,j);
+
+  if(!del && j<current.length){
+    j++; setTimeout(type,100);
+  } else if(del && j>0){
+    j--; setTimeout(type,50);
   } else {
-    document.getElementById("typing").innerText = current.substring(0, j--);
-    if (j === 0) {
-      isDeleting = false;
-      i = (i + 1) % roles.length;
-    }
+    del=!del;
+    if(!del) i=(i+1)%roles.length;
+    setTimeout(type,1000);
   }
-  setTimeout(type, isDeleting ? 50 : 100);
 }
 type();
 </script>
